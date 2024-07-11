@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+/* common styles */
+.is-dark-mode {
+  /* background-color: #001529; */
+  /* color: #FFF; */
+}
+
+.container {
+  min-height: 100vh;
+}

@@ -1,0 +1,20 @@
+.menuComp {
+    position: relative;
+
+    .swichMode {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 16px;
+        display: flex;
+        align-items: center;
+
+        .isActive {
+            color: #FFF;
+        }
+
+        .swichModeBtn {
+            margin-left: 10px;
+        }
+    }
+}
