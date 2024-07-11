@@ -6,6 +6,7 @@ import { CURRENT_PROGRESS, NETWORK_ERROR } from "../../utils/helpers/constants"
 import { LoadingOutlined } from '@ant-design/icons';
 import { TinyColor } from '@ctrl/tinycolor';
 import { updateCurrentProgres } from "../../redux/booking/bookingSlice"
+import BookingComp from "../BookingComp/BookingComp"
 
 type BookingBlockProps = {
     loading: boolean;
@@ -70,7 +71,7 @@ const BookingBlock: FC<BookingBlockProps> = ({ loading, error, errMessage }) => 
             ) : (
                 <div className={`${styles.bookingSection}`}>
                     {(current===CURRENT_PROGRESS.INFO) ? (
-                        <>booking</>
+                        <BookingComp />
                     ) : (current===CURRENT_PROGRESS.DONE) ? (
                         <ConfigProvider
                             theme={{
