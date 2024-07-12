@@ -1,3 +1,22 @@
 .bookingComp {
-    
+    .availableTables {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        gap: 50px;
+
+        .tableCard {
+            background-color: #FFB19E;
+            opacity: 0.5;
+        }
+        .tableCard {
+            cursor: pointer;
+        }
+        .tableCard.isActive {
+            background-color: #99CE3E;
+        }
+        .tableCard.isActive:hover {
+            opacity: 1
+        }
+    }
 }

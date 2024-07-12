@@ -1,12 +1,13 @@
 import { FC, useContext, useEffect, useState } from "react"
 import styles from "./BookingBlock.module.scss"
-import { Alert, Spin, ConfigProvider, Button } from 'antd'
+import { Alert, Spin, ConfigProvider, Button, DatePicker, TimePicker } from 'antd'
 import { useSelector, useDispatch } from "react-redux"
 import { CURRENT_PROGRESS, NETWORK_ERROR } from "../../utils/helpers/constants"
 import { LoadingOutlined } from '@ant-design/icons';
 import { TinyColor } from '@ctrl/tinycolor';
 import { updateCurrentProgres } from "../../redux/booking/bookingSlice"
 import BookingComp from "../BookingComp/BookingComp"
+import dayjs from "dayjs"
 
 type BookingBlockProps = {
     loading: boolean;
@@ -41,6 +42,14 @@ const BookingBlock: FC<BookingBlockProps> = ({ loading, error, errMessage }) => 
         dispatch(updateCurrentProgres(progresIndex))
     }
 
+    const onChangeDatePicker = (e: any) => {
+        console.log("== onChangeDatePicker: ", e);
+    }
+
+    const onChangeTimePicker = (e: any) => {
+        console.log("== onChangeTimePicker: ", e);
+    }
+
     return (
       <>
         <div className={`${styles.bookingBlock}`}>
@@ -71,7 +80,18 @@ const BookingBlock: FC<BookingBlockProps> = ({ loading, error, errMessage }) => 
             ) : (
                 <div className={`${styles.bookingSection}`}>
                     {(current===CURRENT_PROGRESS.INFO) ? (
-                        <BookingComp />
+                        <>
+                            <div className={`${styles.datetimePicker}`}>
+                                <div>
+                                    <DatePicker defaultValue={dayjs('2024-07-20', 'YYYY-MM-DD')} disabled onChange={onChangeDatePicker} />
+                                </div>
+                                <div className={`${styles.timePicker}`}>
+                                    <TimePicker onChange={onChangeTimePicker} defaultValue={dayjs('10:10:15', 'HH:mm:ss')} disabled />
+                                </div>
+                            </div>
+                            
+                            <BookingComp />
+                        </>
                     ) : (current===CURRENT_PROGRESS.DONE) ? (
                         <ConfigProvider
                             theme={{

@@ -12,7 +12,7 @@ import { PAGE_THEME, NETWORK_ERROR } from "../../utils/helpers/constants"
 const MainPage: FC = () => {
     const dispatch = useDispatch();
     const { currentTheme } = useContext(ThemeContext)
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
     const [errMessage, setErrMessage] = useState('')
 

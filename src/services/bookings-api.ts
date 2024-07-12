@@ -3,10 +3,15 @@ import http from './http'
 
 const getAllTables = async () => {
     const res = await http.get(`/tableinfo`)
-    console.log("== res: ", res);
-    return res
+    return res?.data
+};
+
+const getAvailableTables = async (arrivalTime: string) => {
+    const res = await http.get(`/tableinfo/available?arrivalTime=${arrivalTime}`)
+    return res?.data
 };
 
 export {
-    getAllTables
+    getAllTables,
+    getAvailableTables
 }
