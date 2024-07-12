@@ -5,9 +5,9 @@ import ProgresComp from "../../components/ProgresComp/ProgresComp"
 import BookingBlock from "../../components/BookingBlock/BookingBlock"
 import { ThemeContext } from "../../context/themeContext"
 import * as BookingApi from '../../services/bookings-api'
-import { updateTables } from "../../redux/booking/bookingSlice"
 import { useDispatch } from "react-redux"
-import { PAGE_THEME, NETWORK_ERROR } from "../../utils/helpers/constants"
+import { PAGE_THEME, NETWORK_ERROR, CURRENT_PROGRESS } from "../../utils/helpers/constants"
+import * as bookingActions from "../../redux/booking/bookingSlice"
 
 const MainPage: FC = () => {
     const dispatch = useDispatch();
@@ -18,6 +18,8 @@ const MainPage: FC = () => {
 
     useEffect(() => {
         console.log("main page mounted.")
+
+        dispatch(bookingActions.updateCurrentProgres(CURRENT_PROGRESS.BOOK))
         fetchTables()
     }, [])
 
@@ -26,7 +28,7 @@ const MainPage: FC = () => {
         await BookingApi.getAllTables()
         .then((res) => {
             console.log("== tablesList: ", res)
-            dispatch(updateTables(res))
+            dispatch(bookingActions.updateTables(res))
             setLoading(false)
             setError(false)
         })

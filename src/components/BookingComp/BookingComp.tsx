@@ -29,8 +29,8 @@ const BookingComp: FC = () => {
   const [availableTables, setAvailableTables] = useState<number[]>([])
   const tables = useSelector((state: any) => state.booking.tables)
 
-  const updateCurrentTable = () => {
-    console.log("== updateCurrentTable: ");
+  const updateCurrentTable = (tid: number) => {
+    setCurrentTable(tid)
   }
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const BookingComp: FC = () => {
                       bordered={true} 
                       style={{ width: 200 }}
                       className={`${styles.tableCard} ${checkIfTableAvailable(table.id, availableTables) ? styles.isActive : ''}`}
-                      onClick={checkIfTableAvailable(table.id, availableTables) ? updateCurrentTable : () => {} }
+                      onClick={checkIfTableAvailable(table.id, availableTables) ? () => updateCurrentTable(table.id) : () => {} }
                     >
                       <p>Table No: { table.tableNo }</p>
                       <p>Table Size: { table.tableSize }</p>

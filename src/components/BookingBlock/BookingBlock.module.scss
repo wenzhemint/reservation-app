@@ -6,11 +6,13 @@
     padding-right: 20px;
 
     .bookingSection {
-        min-height: 300px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+
+        .guideSection {
+            padding-top: 120px;
+        }
     }
 
     .datetimePicker {

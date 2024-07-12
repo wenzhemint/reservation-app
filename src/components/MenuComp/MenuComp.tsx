@@ -5,7 +5,7 @@ import type { MenuProps } from 'antd'
 import { HomeOutlined, InfoCircleOutlined } from '@ant-design/icons'
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { updateMenuTab } from "../../redux/menu/menuSlice"
+import  * as menuActions from "../../redux/menu/menuSlice"
 import { Switch } from "antd"
 import { ThemeContext } from "../../context/themeContext"
 import { PAGE_THEME } from "../../utils/helpers/constants"
@@ -32,7 +32,7 @@ const MenuComp: FC = () => {
   const onSwichTab: MenuProps['onClick'] = (e) => {
     console.log('menu clicked ', e);
     const menuKey = e?.key || '/'
-    dispatch(updateMenuTab(menuKey))
+    dispatch(menuActions.updateMenuTab(menuKey))
     navigate('/'+menuKey)
   };
 

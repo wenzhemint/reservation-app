@@ -3,9 +3,9 @@ import styles from "./BookingBlock.module.scss"
 import { Alert, Spin, ConfigProvider, Button, DatePicker, TimePicker } from 'antd'
 import { useSelector, useDispatch } from "react-redux"
 import { CURRENT_PROGRESS, NETWORK_ERROR } from "../../utils/helpers/constants"
-import { LoadingOutlined } from '@ant-design/icons';
-import { TinyColor } from '@ctrl/tinycolor';
-import { updateCurrentProgres } from "../../redux/booking/bookingSlice"
+import { LoadingOutlined } from '@ant-design/icons'
+import { TinyColor } from '@ctrl/tinycolor'
+import * as bookingActions from "../../redux/booking/bookingSlice"
 import BookingComp from "../BookingComp/BookingComp"
 import dayjs from "dayjs"
 
@@ -21,7 +21,6 @@ const getHoverColors = (colors: string[]) =>
 const getActiveColors = (colors: string[]) =>
     colors.map((color) => new TinyColor(color).darken(5).toString());
   
-
 const BookingBlock: FC<BookingBlockProps> = ({ loading, error, errMessage }) => {
     const dispatch = useDispatch();
     const current = useSelector((state: any) => state.booking.currentProgres)
@@ -39,7 +38,7 @@ const BookingBlock: FC<BookingBlockProps> = ({ loading, error, errMessage }) => 
         } else {
             progresIndex = CURRENT_PROGRESS.BOOK
         }
-        dispatch(updateCurrentProgres(progresIndex))
+        dispatch(bookingActions.updateCurrentProgres(progresIndex))
     }
 
     const onChangeDatePicker = (e: any) => {
@@ -93,39 +92,43 @@ const BookingBlock: FC<BookingBlockProps> = ({ loading, error, errMessage }) => 
                             <BookingComp />
                         </>
                     ) : (current===CURRENT_PROGRESS.DONE) ? (
-                        <ConfigProvider
-                            theme={{
-                                components: {
-                                Button: {
-                                    colorPrimary: `linear-gradient(116deg,  ${colors3.join(', ')})`,
-                                    colorPrimaryHover: `linear-gradient(116deg, ${getHoverColors(colors3).join(', ')})`,
-                                    colorPrimaryActive: `linear-gradient(116deg, ${getActiveColors(colors3).join(', ')})`,
-                                    lineWidth: 0,
-                                },
-                                },
-                            }}
-                            >
-                            <Button type="primary" size="large" onClick={nextProgress} >
-                                All Set
-                            </Button>
-                        </ConfigProvider>
+                        <div className={`${styles.guideSection}`}>
+                            <ConfigProvider
+                                theme={{
+                                    components: {
+                                    Button: {
+                                        colorPrimary: `linear-gradient(116deg,  ${colors3.join(', ')})`,
+                                        colorPrimaryHover: `linear-gradient(116deg, ${getHoverColors(colors3).join(', ')})`,
+                                        colorPrimaryActive: `linear-gradient(116deg, ${getActiveColors(colors3).join(', ')})`,
+                                        lineWidth: 0,
+                                    },
+                                    },
+                                }}
+                                >
+                                <Button type="primary" size="large" onClick={nextProgress} >
+                                    All Set
+                                </Button>
+                            </ConfigProvider>
+                        </div>
                     ) : (
-                        <ConfigProvider
-                            theme={{
-                                components: {
-                                Button: {
-                                    colorPrimary: `linear-gradient(135deg, ${colors1.join(', ')})`,
-                                    colorPrimaryHover: `linear-gradient(135deg, ${getHoverColors(colors1).join(', ')})`,
-                                    colorPrimaryActive: `linear-gradient(135deg, ${getActiveColors(colors1).join(', ')})`,
-                                    lineWidth: 0,
-                                },
-                                },
-                            }}
-                            >
-                            <Button type="primary" size="large" onClick={nextProgress} >
-                                Start Booking
-                            </Button>
-                        </ConfigProvider>
+                        <div className={`${styles.guideSection}`}>
+                            <ConfigProvider
+                                theme={{
+                                    components: {
+                                    Button: {
+                                        colorPrimary: `linear-gradient(135deg, ${colors1.join(', ')})`,
+                                        colorPrimaryHover: `linear-gradient(135deg, ${getHoverColors(colors1).join(', ')})`,
+                                        colorPrimaryActive: `linear-gradient(135deg, ${getActiveColors(colors1).join(', ')})`,
+                                        lineWidth: 0,
+                                    },
+                                    },
+                                }}
+                                >
+                                <Button type="primary" size="large" onClick={nextProgress} >
+                                    Start Booking
+                                </Button>
+                            </ConfigProvider>
+                        </div>
                     )}
                     
                 </div>
