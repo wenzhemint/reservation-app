@@ -6,19 +6,17 @@
     padding-right: 20px;
 
     .bookingSection {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
 
         .guideSection {
-            padding-top: 120px;
-        }
-    }
+            padding-top: 20px;
 
-    .datetimePicker {
-        display: flex;
-        gap: 10px;
-        padding-bottom: 40px;
+            .guideBtn {
+                padding-top: 20px;
+            }
+        }
     }
 
     .errorContent {
