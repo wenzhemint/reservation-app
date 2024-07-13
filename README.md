@@ -1,6 +1,13 @@
-# Getting Started with Create React App
+# Links to github repositories for Hilton-Hotel Reservation task. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Backend api :
+https://github.com/wenzhemint/reservation-api
+
+Frontend app:
+https://github.com/wenzhemint/reservation-app
+
+## Description
+Build React front-end application for a simple Reservation for Hilton Hotel using React, TypeScript, Redux, Ant Design, etc.
 
 ## Available Scripts
 
