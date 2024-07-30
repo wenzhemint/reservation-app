@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
+type MenuState = {
+  selectedTab: string
+}
+
+const initialState: MenuState = {
     selectedTab: 'main'
 }
 

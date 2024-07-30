@@ -1,5 +1,5 @@
-import MainPage from '../pages/MainPage/MainPage';
-import AboutPage from '../pages/AboutPage/AboutPage';
+import MainPage from '../pages/MainPage/MainPage'
+import AboutPage from '../pages/AboutPage/AboutPage'
 
 export const routerConfig = [
     {
@@ -14,4 +14,4 @@ export const routerConfig = [
         path: "/about",
         element: <AboutPage />,
     }
-];
+]

@@ -1,14 +1,16 @@
-import { FC, useContext, useState } from "react"
+import { FC, useContext, useEffect, useState, } from "react"
 import styles from "./Menu.module.scss"
-import { Menu } from "antd"
-import type { MenuProps } from 'antd'
+import { Menu, MenuProps, Switch } from "antd"
 import { HomeOutlined, InfoCircleOutlined } from '@ant-design/icons'
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import  * as menuActions from "../../redux/menu/menuSlice"
-import { Switch } from "antd"
 import { ThemeContext } from "../../context/themeContext"
 import { PAGE_THEME } from "../../utils/helpers/constants"
+
+type MenuCompProps = {
+  activeTab?: string;
+}
 
 const items: MenuProps['items'] = [
   {
@@ -23,21 +25,27 @@ const items: MenuProps['items'] = [
   }
 ];
 
-const MenuComp: FC = () => {
-  const dispatch = useDispatch();
+const MenuComp: FC<MenuCompProps> = ({ activeTab="" }) => {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const { currentTheme, updateCurrentTheme } = useContext(ThemeContext)
   const selectedTab = useSelector((state: any) => state.menu.selectedTab)
 
+  useEffect(() => {
+    console.log("== activeTab: ", activeTab)
+
+    activeTab!="" && dispatch(menuActions.updateMenuTab(activeTab))
+  }, [activeTab])
+
   const onSwichTab: MenuProps['onClick'] = (e) => {
-    console.log('menu clicked ', e);
+    console.log('menu clicked ', e)
     const menuKey = e?.key || '/'
     dispatch(menuActions.updateMenuTab(menuKey))
     navigate('/'+menuKey)
   };
 
   const onChangeTheme = (checked: boolean) => {
-    console.log(`switch to ${checked}`);
+    console.log(`switch to ${checked}`)
     const newTheme = checked?PAGE_THEME.DARK:PAGE_THEME.LIGHT
     updateCurrentTheme(newTheme)
   };

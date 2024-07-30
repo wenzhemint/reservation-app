@@ -2,7 +2,7 @@ import { FC } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import styles from "./ProgresComp.module.scss"
 import { Steps } from 'antd'
-import { CURRENT_PROGRESS } from "../../utils/helpers/constants";
+import { CURRENT_PROGRESS } from "../../utils/helpers/constants"
 import * as bookingActions from "../../redux/booking/bookingSlice"
 
 const ProgresComp: FC = () => {
@@ -13,7 +13,7 @@ const ProgresComp: FC = () => {
     if(value === CURRENT_PROGRESS.BOOK) {
       dispatch(bookingActions.updateCurrentProgres(CURRENT_PROGRESS.BOOK))
     }
-  };
+  }
   return (
     <>
       <div className={`${styles.progresComp}`}>

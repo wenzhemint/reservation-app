@@ -20,11 +20,11 @@ import dayjs from "dayjs"
 import * as bookingActions from "../../redux/booking/bookingSlice"
 import { LoadingOutlined } from '@ant-design/icons'
 
-const { Title } = Typography;
+const { Title } = Typography
 type FieldType = {
   guestName?: string;
   contactInfo?: string;
-};
+}
 
 const BookingFormComp: FC = () => {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ const BookingFormComp: FC = () => {
       xs: { span: 24 },
       sm: { span: 24 },
     },
-  };
+  }
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [errMessage, setErrMessage] = useState('')
@@ -58,11 +58,11 @@ const BookingFormComp: FC = () => {
     }
     
     createBooking(guestName, contactInfo)
-  };
+  }
   
   const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
     console.log('Failed:', errorInfo);
-  };
+  }
 
   const createBooking = async (guestName: string, contactInfo: string) => {
     setLoading(true);

@@ -1,16 +1,16 @@
 import axios from 'axios'
 import http from './http'
-import { CreateBookingType } from '../models/model';
+import { CreateBookingType } from '../models/model'
 
 const getAllTables = async () => {
     const res = await http.get(`/tableinfo`)
     return res?.data
-};
+}
 
 const getAvailableTables = async (arrivalTime: string) => {
     const res = await http.get(`/tableinfo/available?arrivalTime=${arrivalTime}`)
     return res?.data
-};
+}
 
 const createNewBooking = async (booking: CreateBookingType) => {
     const body = {
@@ -21,7 +21,7 @@ const createNewBooking = async (booking: CreateBookingType) => {
     }
     const res = await http.post(`/booking`, body)
     return res?.data
-};
+}
 
 export {
     getAllTables,

@@ -3,7 +3,7 @@ import { PAGE_THEME } from '../utils/helpers/constants'
 
 export type ThemePropsType = {
     currentTheme: string;
-    updateCurrentTheme: (newTheme: string) => void;
+    updateCurrentTheme: (newTheme: string) => void
 }
 
 const contextDefaultValues: ThemePropsType = {
@@ -11,7 +11,7 @@ const contextDefaultValues: ThemePropsType = {
     updateCurrentTheme: () => {}
 };
 
-export const ThemeContext = createContext<ThemePropsType>(contextDefaultValues);
+export const ThemeContext = createContext<ThemePropsType>(contextDefaultValues)
 
 const ThemeProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentTheme, setCurrentTheme] = useState<string>(() => {

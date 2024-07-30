@@ -14,7 +14,7 @@ const { Title } = Typography;
 const mockTimestamp = '2024-07-20T10:10:15Z'
 
 const BookingComp: FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [errMessage, setErrMessage] = useState('')
@@ -23,9 +23,9 @@ const BookingComp: FC = () => {
   const currentTable = useSelector((state: any) => state.booking.selectedTableInfo)
 
   useEffect(() => {
-    console.log("== useEffect: ");
-    fetchAvailableTables();
-    
+    console.log("== BookingComp loaded. ")
+
+    fetchAvailableTables()
   }, [])
 
   const updateCurrentTable = (table: Table) => {
@@ -44,7 +44,7 @@ const BookingComp: FC = () => {
     .then((res) => {
       console.log("== fetchAvailableTables: ", res)
       const filteredTables = filetAvailableTables(res)
-      console.log("== filteredTables: ", filteredTables);
+      console.log("== filteredTables: ", filteredTables)
       setAvailableTables(filteredTables)
       setLoading(false)
       setError(false)
@@ -118,7 +118,7 @@ const BookingComp: FC = () => {
                 </div>
           
                 <div className={`${styles.availableTables}`}>
-                  {tables.map((table: any, index: number) => {
+                  {tables.map((table: Table, index: number) => {
                     return (
                       <div key={index}>
                         <Card 

@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { CURRENT_PROGRESS } from "../../utils/helpers/constants"
-import { CurrentTableInfo } from '../../models/model';
+import { CurrentTableInfo, Table } from '../../models/model';
 
-type Booking = {
-  tables: object;
+type BookingState = {
+  tables: Table[];
   currentProgres: number,
   selectedTableInfo: CurrentTableInfo | {}
 }
 
-const initialState: Booking = {
-  tables: {},
+const initialState: BookingState = {
+  tables: [],
   currentProgres: CURRENT_PROGRESS.BOOK,
   selectedTableInfo: {}
 }

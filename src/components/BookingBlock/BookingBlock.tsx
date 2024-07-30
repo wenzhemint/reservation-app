@@ -14,15 +14,15 @@ type BookingBlockProps = {
     error: boolean;
     errMessage: string;
 }
-const colors1 = ['#6253E1', '#04BEFE'];
-const colors3 = ['#40e495', '#30dd8a', '#2bb673'];
+const colors1 = ['#6253E1', '#04BEFE']
+const colors3 = ['#40e495', '#30dd8a', '#2bb673']
 const getHoverColors = (colors: string[]) =>
-    colors.map((color) => new TinyColor(color).lighten(5).toString());
+    colors.map((color) => new TinyColor(color).lighten(5).toString())
 const getActiveColors = (colors: string[]) =>
-    colors.map((color) => new TinyColor(color).darken(5).toString());
+    colors.map((color) => new TinyColor(color).darken(5).toString())
   
 const BookingBlock: FC<BookingBlockProps> = ({ loading, error, errMessage }) => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
     const current = useSelector((state: any) => state.booking.currentProgres)
 
     useEffect(() => {

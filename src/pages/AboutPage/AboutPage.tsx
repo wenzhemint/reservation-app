@@ -14,7 +14,7 @@ const AboutPage: FC = () => {
     return (
         <>
             <div className={`container ${currentTheme==PAGE_THEME.DARK?'is-dark-mode':''}`}>
-                <MenuComp />
+                <MenuComp activeTab="about" />
                 <div className={`${styles.aboutPage}`}>
                     About Page
                 </div>
